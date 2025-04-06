@@ -1,0 +1,53 @@
+@import url("/node_modules/swiper/swiper.css");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: Larken;
+  font-weight: 400;
+  src: url("public/fonts/larken/LarkenDEMO-ExtraBold.otf") format("otf");
+}
+
+@font-face {
+  font-family: Underdog;
+  font-style: normal;
+  font-weight: 300 400 500 600 700 800;
+  src: url("/fonts/Underdog-Regular.ttf") format("ttf");
+}
+@layer base {
+  @font-face {
+    font-family: Bytesized;
+    font-weight: 400;
+    src: local(Bytesized) url(/public/fonts/Bytesized/Bytesized-Regular.ttf)
+      format("ttf");
+  }
+
+  @font-face {
+    font-family: "Underdog";
+    font-style: normal;
+    font-weight: 300 400 500 600 700 800;
+    src: url("/public/fonts/Underdog-Regular.ttf") format("ttf");
+    font-display: swap;
+  }
+
+  .floating-image {
+    /* transform: rotate(-15deg); */
+  }
+  .floating-image img {
+    width: 110px;
+    height: 150px;
+    object-fit: cover;
+  }
+  .customization-anim:hover img {
+    transform-origin: bottom;
+    transition-property: all;
+    transition-duration: 0.5s;
+  }
+  .customization-anim:hover img:first-child {
+    transform: rotateZ(-21deg);
+  }
+  .customization-anim:hover img:last-child {
+    transform: rotateZ(5deg);
+  }
+}
