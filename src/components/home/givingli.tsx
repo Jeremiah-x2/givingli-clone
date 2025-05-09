@@ -16,6 +16,8 @@ export default function Givingli() {
         start: "top bottom",
         end: "+=100%",
         scrub: true,
+        // pin: true,
+        // pinSpacing: false,
       },
     });
     bgTl.to("body", { background: "#333333" });
@@ -73,9 +75,9 @@ export default function Givingli() {
   return (
     <section
       ref={containerRef}
-      className="hello grid grid-cols-12 auto-cols-[1fr] grid-rows-[auto] min-h-[100dvh] mb-60"
+      className="hello grid mt-40 relative grid-cols-12 auto-cols-[1fr] grid-rows-[auto] min- h-[100dvh] mb-20"
     >
-      <h3 className="col-start-5 col-end-9 text-center font-extrabold text-4xl">
+      <h3 className="col-start-5 text-white font-mauline col-end-9 text-center font-extrabold text-[44px] leading-[1.2]">
         Givingli <br />
         Cash
       </h3>
@@ -187,6 +189,15 @@ export default function Givingli() {
             className="w-full h-full object-cover z-[1000] relative"
           />
         </div> */}
+      </div>
+
+      <div className="col-start-1 col-end-13 text-center font-poppins text-sm mt-4 text-[#3e627c]">
+        <p>
+          Givingli Cash gives your family and friends the
+          <br />
+          ability to choose from any of our 300+ gifts. No <br /> more gifting
+          anxiety. No more unwanted gifts.
+        </p>
       </div>
     </section>
   );

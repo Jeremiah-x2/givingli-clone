@@ -4,6 +4,15 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "react-router-dom";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, EffectCreative, EffectFade } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/effect-creative";
+import "swiper/css/effect-fade";
+import { useGSAP } from "@gsap/react";
 
 export default function Home() {
   const heroContainerRef = useRef<HTMLDivElement>(null);
@@ -11,11 +20,18 @@ export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
   const phoneRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
   const imagesContainerRef = useRef<HTMLDivElement>(null);
   const introRef = useRef<HTMLDivElement>(null);
+  const bgColors = ["#B8CEDC", "#C9DA8F", "#FEDF6F", "#F36464"];
+  const phoneBgImages = [
+    "https://cdn.prod.website-files.com/65240dac30f703b7a711b7c2/65245a0ecc54c058b62e52d9_phone-bg-birthday.webp",
+    "https://cdn.prod.website-files.com/65240dac30f703b7a711b7c2/652da615099e3f13d0fd5aae_phone-bg-holiday.webp",
+    "https://cdn.prod.website-files.com/65240dac30f703b7a711b7c2/652da6143437d8fc575af3d4_phone-bg-congrats.webp",
+    "https://cdn.prod.website-files.com/65240dac30f703b7a711b7c2/652da615303aaf0c084fc05e_phone-bg-love.webp",
+  ];
+  const navigationBgColors = ["#184363", "#1c471d", "#4a411e", "#4f1316"];
 
-  useEffect(() => {
+  useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
 
     const tl = gsap.timeline({
@@ -38,10 +54,21 @@ export default function Home() {
         {
           x: "0%",
           y: "0%",
-          rotateZ: "0deg",
-          rotateX: "0deg",
-          rotateY: "0deg",
-          // rotation: 0,
+          rotate: "0deg",
+          // scale: "1.5",
+        },
+        "0"
+      )
+      .to(".second-r", { x: "0%", y: "0%" }, "0")
+      .to(".second-sock", { x: "0%", y: "0%" }, "0")
+      .to(
+        ".third-bride-groom",
+        {
+          x: "0%",
+          y: "0%",
+          left: "25%",
+          translate: "auto",
+          translateX: "-100%",
         },
         "0"
       )
@@ -50,6 +77,20 @@ export default function Home() {
         {
           x: "0%",
           y: "0%",
+        },
+        "0"
+      )
+      .to(
+        ".happy-bd > img",
+        {
+          rotate: "0deg",
+        },
+        "0"
+      )
+      .to(
+        ".bd-hat > img",
+        {
+          rotate: "0deg",
         },
         "0"
       )
@@ -88,21 +129,12 @@ export default function Home() {
       "0.5"
     );
 
-    gsap.fromTo(
-      textRef.current,
-      { y: 0 },
-      {
-        opacity: 1,
-        duration: 2,
-      }
-    );
-
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 
-  useEffect(() => {
+  useGSAP(() => {
     const hero = heroContainerRef.current;
     const images = imagesRef.current?.querySelectorAll(".floating-image") || [];
 
@@ -250,15 +282,16 @@ export default function Home() {
     };
   }, []);
 
+  const centerImagesTl = gsap.timeline({
+    yoyo: true,
+  });
+
   return (
     <main
       ref={heroContainerRef}
       className="pb-4 relative w-[100vw] overflow-x-hidden"
     >
-      {/* Layout Issue Section */}
-      {/* Layout Issue Section */}
-      {/* Scroll Container */}
-      <div ref={containerRef} className="h-[250vh] border-4 relative">
+      <div ref={containerRef} className="h-[250vh] relative">
         <div
           ref={imagesContainerRef}
           className="absolute images-container w-[100%]  h-[100dvh] top-0 left-0 overflow-hidden"
@@ -361,7 +394,7 @@ export default function Home() {
               </svg>
             </div>
             <div className="text-center text-[#333]">
-              <h2 className=" font-larken leading-none text-[56px] font-bold mb-4">
+              <h2 className=" font-mauline leading-[1.5] text-[56px] font-bold mb-4">
                 Easy <br />
                 Thoughtful <br />
                 Gifting
@@ -377,13 +410,32 @@ export default function Home() {
 
           {/* Phone Mockup */}
 
-          <div className="w-full h-full absolute left-0 flex justify-center items-center">
+          <div className="w-full h-full z-[1000] absolute  left-0 flex justify-center items-center">
             <div
               ref={phoneRef}
               className="relative z-50 w-full h-full flex justify-center items-center"
             >
-              <div className=" relative flex justify-center items-center phone-image top-[85vh]">
-                <div className="absolute w-[80%]  z-[1000] border-4 h-[60%] top-[15%] flex justify-center items-center">
+              <div className=" relative  flex -red-500 justify-center items-center phone-image top-[85vh]">
+                <div className="absolute  w-[80%]  z-[1000]  h-[60%] top-[15%] flex justify-center items-center">
+                  <div className="absolute top-[13%] rounded-t-full scale-0 overflow-hidden w-[50%] third-bride-groom -translate-x-[30vw] rounded-b-xl -translate-y-[62vh]  left-[50%] shadow-md">
+                    <div className="absolute w-full h-full bg-black bg-opacity-25"></div>
+                    <img
+                      src="/images/bride-groom.jpg"
+                      alt=""
+                      className="w-full rounded-t-full h-[180px] object-cover"
+                    />
+                  </div>
+
+                  <div className="absolute scale-0 top-[13%] -translate-x-[20vw] -translate-y-[62vh] second-r left-[6%]">
+                    <h3 className="text-[#e81b29]  text-[112px] top-0 rotate-[1deg]">
+                      R
+                    </h3>
+                  </div>
+                  <div className="absolute scale-0 top-[35%] second-sock translate-x-[30vw] -translate-y-[85vh] left-[35%]">
+                    <h3 className="text-[#e81b29] text-[112px] rotate[45deg]">
+                      J
+                    </h3>
+                  </div>
                   <div className="absolute w-[40%] z-50 -translate-x-[24vw] -translate-y-[59vh] top-[9%] bd-hat">
                     <img
                       src="https://cdn.prod.website-files.com/65240dac30f703b7a711b7c2/652449efc3d9cfe7a86981b4_02_outline.webp"
@@ -429,17 +481,179 @@ export default function Home() {
                   {/* Phone backgrounds */}
 
                   <div className="w-full absolute p-[1rem_1.3rem_1rem_1.5rem] inset-[0%] [mask-size:cover] [mask-repeat:no-repeat] [mask-position:center] [mask-image:url(https://cdn.prod.website-files.com/65240dac30f703b7a711b7c2/6524580ed7a5a72f93403af6_phone_mockup_mask.svg)]">
-                    <div className="absolute inset-[15%_1%_15%] border-4 bg-red-400 z-40">
+                    <div className="absolute inset-[15%_1%_15%] pt-1 px-8 pb-20 z-40">
                       <div className="flex relative w-full h-full justify-center items-center">
-                        <img
-                          src="https://cdn.prod.website-files.com/65240dac30f703b7a711b7c2/65245b06f588322132835220_phone-card-birthday.webp"
-                          alt=""
-                          className="w-auto h-full align-middle max-w-full inline-block"
-                        />
+                        <Swiper
+                          modules={[Navigation, EffectCreative]}
+                          navigation={{
+                            enabled: true,
+                            nextEl: ".nextel",
+                            prevEl: ".prevel",
+                          }}
+                          className="w-full h-full mySwiper"
+                          onSlideChange={(e) => {
+                            gsap.to("body", {
+                              background: bgColors[e.activeIndex],
+                            });
+                            gsap.to(".start-gifting-btn", {
+                              color: bgColors[e.activeIndex],
+                            });
+                            gsap.to(".nav-btn", {
+                              background: navigationBgColors[e.activeIndex],
+                            });
+                            centerImagesTl
+                              .to(
+                                ".happy-bd",
+                                {
+                                  scale: () => {
+                                    if (e.activeIndex !== 0) return 0;
+                                    else {
+                                      return 1;
+                                    }
+                                  },
+                                },
+                                "+=0.01"
+                              )
+                              .to(
+                                ".bd-hat",
+                                {
+                                  scale: () => {
+                                    if (e.activeIndex !== 0) return 0;
+                                    else {
+                                      return 1;
+                                    }
+                                  },
+                                },
+                                "-=0.01"
+                              );
+
+                            centerImagesTl
+                              .to(
+                                ".second-r",
+                                {
+                                  scale: () => {
+                                    if (e.activeIndex !== 1) return 0;
+                                    else {
+                                      return 1;
+                                    }
+                                  },
+                                  ease: "back.inOut",
+                                },
+                                "+=0.01"
+                              )
+                              .to(
+                                ".second-sock",
+                                {
+                                  scale: () => {
+                                    if (e.activeIndex !== 1) return 0;
+                                    else {
+                                      return 1;
+                                    }
+                                  },
+                                  ease: "back.inOut",
+                                },
+                                "-=0.01"
+                              );
+
+                            centerImagesTl.to(
+                              ".third-bride-groom",
+                              {
+                                scale: () => {
+                                  if (e.activeIndex !== 2) return 0;
+                                  else {
+                                    return 1;
+                                  }
+                                },
+                                ease: "back.inOut",
+                              },
+                              "+=0.01"
+                            );
+                            // .to(
+                            //   ".bd-hat",
+                            //   {
+                            //     scale: () => {
+                            //       if (e.activeIndex !== 0) return 0;
+                            //       else {
+                            //         return 1;
+                            //       }
+                            //     },
+                            //   },
+                            //   "0.2"
+                            // );
+
+                            // gsap.to(".phone-bg-images", {
+                            //   s
+                            // });
+                          }}
+                          effect={"creative"}
+                          creativeEffect={{
+                            next: {
+                              scale: 0.5,
+                              shadow: true,
+                              translate: ["100%", 0, 0],
+                            },
+                            prev: {
+                              // shadow: true,
+                              translate: ["-100%", 0, 0],
+                            },
+                          }}
+                        >
+                          <SwiperSlide>
+                            <img
+                              src="https://cdn.prod.website-files.com/65240dac30f703b7a711b7c2/65245b06f588322132835220_phone-card-birthday.webp"
+                              alt=""
+                              className="w-auto h-full align-middle max-w-full inline-block"
+                            />
+                          </SwiperSlide>
+                          <SwiperSlide>
+                            <div className="w-full flex flex-col justify-end rounded-md px-4 py-4 items-end justifyend h-full  bg-[#f2ede1] relative z-20">
+                              <div className="absolute top-3 left-8 font-jane font-semibold text-[112px] self-start leading-none justify-self-start flex gap-7">
+                                <h3 className="text-[#1c471f] rotate-[10deg]">
+                                  M
+                                </h3>
+                                <h3 className="relative top-1 text-[#194463]">
+                                  E
+                                </h3>
+                              </div>
+
+                              <div className="absolute top-[22%] left-28 font-jane font-semibold text-[112px] self-start leading-none  justify-self-start flex gap-7">
+                                <h3 className="relative top-1 rotate-[45deg] text-[#ef90b9]">
+                                  R
+                                </h3>
+                              </div>
+
+                              <div className="absolute top-[42%] left-8 font-jane font-semibold text-[112px] self-start leading-none justify-self-start flex gap-7">
+                                <h3 className="text-[#c9dabd] rotate-[7deg]">
+                                  Y
+                                </h3>
+                              </div>
+
+                              <div className="text-[#1c471f] justify-self-end self-end font-worn text-4xl w-[60%] leading-none">
+                                Wishing you peace, joy, and love this holiday
+                                season. I miss you like crazy and can&apos;t
+                                wait to see you in February.
+                              </div>
+                            </div>
+                          </SwiperSlide>
+                          <SwiperSlide>
+                            <div className="w-full h-full flex items-center px-4 text-center font-jane text-base text-white  bg-[#97afb9] relative z-20">
+                              <p className="mt-12">
+                                Congrats on forever! <br />
+                                Your love is a special kind of love. Cheers to a
+                                lifetime of happiness together.
+                              </p>
+                            </div>
+                          </SwiperSlide>
+                          <SwiperSlide>
+                            <div className="w-full h-full  bg-[#f9d4d7] relative z-20">
+                              fdksfhkdj
+                            </div>
+                          </SwiperSlide>
+                        </Swiper>
                       </div>
                     </div>
 
-                    <div className="relative w-full h-full overflow-hidden z-10">
+                    <div className="relative  w-full h-full overflow-hidden z-10">
                       <div className="absolute w-full top-0 left-0 text-black">
                         <svg
                           fill="none"
@@ -522,53 +736,82 @@ export default function Home() {
                         className="w-full absolute bottom-0 left-0 z-30 align-middle"
                       />
                     </div>
-                    {/* <div className="absolute z-50 bottom-8 grid gap-2 rounded-[5rem] grid-rows-[auto] grid-cols-[auto] auto-cols-auto grid-flow-col place-content-center place-items-center p-1 px-4 bg-white left-[4%] right-[4%] text-[#222] flex justify-between">
-                      <div className="w-12 h-12 flex items-center justify-center bg-bg rounded-full">
-                        <ArrowLeft />
-                      </div>
-                      <div className="w-[10rem] h-12 flex justify-center items-center  overflow-hidden">
-                        Happy Birthday
-                      </div>
-                      <div className="w-12 h-12 flex items-center justify-center bg-bg rounded-full">
-                        <ArrowRight />
-                      </div>
-                    </div> */}
-                    <div className="absolute inset-[0%] border-4">
-                      <img
-                        src="https://cdn.prod.website-files.com/65240dac30f703b7a711b7c2/65245a0ecc54c058b62e52d9_phone-bg-birthday.webp"
-                        alt=""
-                        className="absolute w-full"
-                      />
+
+                    <div className="absolute phone-bg-images inset-[0%]">
+                      <Swiper
+                        modules={[Navigation, EffectFade]}
+                        className="w-full h-full"
+                        navigation={{
+                          enabled: true,
+                          nextEl: ".nextel",
+                          prevEl: ".prevel",
+                        }}
+                        effect="fade"
+                        fadeEffect={{ crossFade: true }}
+                      >
+                        {phoneBgImages.map((item, i) => (
+                          <SwiperSlide key={i}>
+                            <img
+                              src={item}
+                              alt=""
+                              className="absolute w-full"
+                            />
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
                     </div>
                   </div>
                   {/*  */}
-                  {/* <div className="absolute px-[4%] left-0 right-0 top-[15%] w-full">
-                    <img
-                      src="https://cdn.prod.website-files.com/65240dac30f703b7a711b7c2/6525891610faf129a1885e87_givingli-cash-card.webp"
-                      alt=""
-                      className="w-full"
-                    />
-                  </div> */}
-                  {/*  */}
-                  {/* <div className="absolutehttps://cdn.prod.website-files.com/65240dac30f703b7a711b7c2/6525539ee30ff890003ef6b7_gifts-img-08.webp top-[55%] left-[2%] right-[2%] px-[10%] text-center">
-            <div className="">Select Amount</div>
-            <div className="grid grid-cols-[1fr_1fr_1fr] items-center">
-              <div className="border-4 w-[70%] pb-[70%]">
-                <Minus />
-              </div>
-              <h3>$10</h3>
-              <div>
-                <Plus />
-              </div>
-            </div>
-          </div> */}
-                  {/*  */}
-                  <div className="w-full z-30 relative">
+
+                  <div className="w-full z-30  relative">
                     <img
                       src="https://cdn.prod.website-files.com/65240dac30f703b7a711b7c2/6524472ece64b75ac0024818_phone_mockup.webp"
                       alt=""
                       className="w-full"
                     />
+
+                    <div className="absolute z-[1000] items-center flex justify-between -bottom-20 w-full px-3 py-2 rounded-full bg-white">
+                      <div className="w-12 bg-[#184363] prevel overflow-hidden nav-btn relative h-12 rounded-full  flex justify-center items-center before:content['*'] before:w-0 before:bg-white before:bg-opacity-30 before:absolute before:top-full hover:before:top-0 before:rounded-full before:h-0 before:z-10 hover:before:w-[100px] hover:before:h-[100px] before:[transition-duration:0.3s] before:[transition-property:all] hover:before:rounded-none">
+                        <ArrowLeft />
+                      </div>
+                      <Swiper
+                        className="flex-1 text-center border4 h-[40px]"
+                        modules={[Navigation]}
+                        navigation={{
+                          prevEl: ".prevel",
+                          nextEl: ".nextel",
+                          enabled: true,
+                        }}
+                        direction="vertical"
+                      >
+                        <SwiperSlide>
+                          <p className="text-[#184363] font-mauline text-2xl">
+                            Happy Birthday
+                          </p>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                          <p className="text-[#1c471f] font-mauline text-2xl">
+                            Happy Holidays
+                          </p>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                          <p className="text-[#4a411e]  font-mauline text-2xl">
+                            Congrats
+                          </p>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                          <p className="text-[#4f1316] font-mauline text-2xl">
+                            Love
+                          </p>
+                        </SwiperSlide>
+                      </Swiper>
+                      <div
+                        onClick={() => console.log("Hello world")}
+                        className="w-12 bg-[#184363] nextel overflow-hidden nav-btn relative h-12 rounded-full  flex justify-center items-center before:content['*'] before:w-0 before:bg-white before:bg-opacity-30 before:absolute before:top-full hover:before:top-0 before:rounded-full before:h-0 before:z-10 hover:before:w-[200px] hover:before:h-[200px] before:[transition-duration:0.3s] before:[transition-property:all]  hover:before:rounded-none"
+                      >
+                        <ArrowRight />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -576,19 +819,20 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="w-full h-full absolute top-0 left-0 flex justify-end">
+        <div className="w-full h-full -z-10 absolute top-0 left-0 flex justify-end">
           <div
             ref={introRef}
             className="intro absolute w-[100vw] h-[100dvh]  top-0 left-0 px-[2.5rem]"
           >
-            <div className="w-full max-w-[85rem] mx-auto h-full flex items-center">
-              <div className="grid grid-cols-12 w-full">
+            <div className="w-full max-w-[85rem] px-8 mx-auto h-full flex items-center">
+              <div className="grid grid-cols-12 w-full font-mauline">
                 <h3 className="col-span-4 text-[4rem] leading-none font-bold">
                   We make gifting and celebrating better.
                 </h3>
-                <p className="col-start-10 col-end-13 self-center">
-                  So you can show up for every meaningful occasion, milestone,
-                  and moment.
+                <p className="col-start-10 col-end-13 font-poppins self-center">
+                  So you can show up for every <br /> meaningful occasion,
+                  <br />
+                  milestone, and moment.
                 </p>
               </div>
             </div>

@@ -11,33 +11,52 @@ export default function ImageReveal() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const images = document.querySelectorAll(".img");
-    // gsap.to("body", {
-    //   background: "#c3b2e7",
-    //   scrollTrigger: {
-    //     trigger: containerRef.current,
-    //     start: "top bottom",
-    //     end: "+=100%",
-    //     scrub: true,
-    //   },
-    // });
+    gsap.to("body", {
+      background: "#c3b2e7",
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top bottom",
+        end: "+=100%",
+        scrub: true,
+        // pinSpacing: false,
+      },
+    });
     const scrollTl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
-        end: "+=180%",
+        end: "+=200%",
         pin: containerRef.current,
-        pinSpacing: true,
+        // pinSpacing: false,
 
         scrub: true,
-        anticipatePin: 1,
+        // anticipatePin: 1,
+      },
+    });
+
+    scrollTl.to(containerRef.current, {});
+
+    const scrollTl2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top top",
+        end: "+=100%",
+        // pin: containerRef.current,
+        // pinSpacing: true,
+
+        scrub: true,
+        // anticipatePin: 1,
       },
     });
 
     images.forEach((item) => {
-      scrollTl.fromTo(
+      scrollTl2.fromTo(
         item,
+
         { top: "50%", left: "50%", translateX: "-50%", translateY: "-50%" },
         {
+          delay: 0.2,
+
           top: () => {
             if (item.classList.contains("img-1")) return "6";
             if (item.classList.contains("img-2")) return "40%";
@@ -78,69 +97,23 @@ export default function ImageReveal() {
           translateX: "0",
           translateY: "0",
 
-          stagger: 0.2,
+          stagger: 3,
         },
         "0"
       );
     });
 
-    scrollTl.fromTo(
+    scrollTl2.fromTo(
       ".gift-text",
       { opacity: 0, scale: 0.4 },
-      { opacity: 1, scale: 1 },
+      { opacity: 1, scale: 1, delay: 0.2 },
       "0"
     );
-
-    // const container = containerRef.current;
-    // const handleMouseMove = (e: MouseEvent) => {
-    //   if (!container || images.length === 0) return;
-    //   // Get mouse position relative to the center of the hero section
-    //   const rect = container.getBoundingClientRect();
-    //   const centerX = rect.width / 2;
-    //   const centerY = rect.height / 2;
-
-    //   const mouseX = e.clientX - rect.left;
-    //   const mouseY = e.clientY - rect.top;
-
-    //   // Calculate direction from center (-1 to 1)
-    //   const directionX = (mouseX - centerX) / centerX;
-    //   const directionY = (mouseY - centerY) / centerY;
-
-    //   // Animate each image with slightly different movement
-    //   images.forEach((image, index) => {
-    //     // Different movement factor for each image (5-15px)
-    //     const moveFactor = 20 + (1 % 3) * 5;
-
-    //     gsap.to(image, {
-    //       x: `${directionX * moveFactor}`,
-    //       y: `${directionY * moveFactor}`,
-
-    //       duration: 0.5,
-    //       ease: "power2.out",
-    //     });
-    //   });
-    // };
-    // container!.addEventListener("mousemove", handleMouseMove);
-    // return () => {
-    //   container!.removeEventListener("mousemove", handleMouseMove);
-    // };
   }, []);
 
   return (
-    <div ref={containerRef} className="min-h-[100dvh] w-full border-4">
-      {/*  */}
-      {/* <div className="absolute w-full h-full flex justify-center items-center">
-        <div className="absolute w-40 h-40 top-6 left-[15%] bg-red-500 opacity-0 rounded-lg  z-40 img img-1"></div>
-        <div className="absolute w-40 h-40 top-6 left-[15%] bg-blue-500 rounded-lg  z-40 img"></div>
-        <div className="absolute w-20 h-20 top-[40%] left-0 bg-blue-500 rounded-lg 2 z-40 img"></div>
-        <div className="absolute w-40 h-40 bottom-6 left-[5%] bg-blue-500 rounded-lg  z-40 img"></div>
-        <div className="absolute w-40 h-40 top-6 right-[5%] bg-blue-500 rounded-lg  z-40 img"></div>
-        <div className="absolute w-20 h-20 bottom-0 left-[45%] bg-blue-500 rounded-lg  z-40 img"></div>
-        <div className="absolute w-40 h-40 bottom-0 right-[0%] bg-blue-500 rounded-lg  z-40 img"></div>
-      </div> */}
-      {/*  */}
-      <div></div>
-      <div className="absolute w-full h-[100vh] top-0 left-0 ">
+    <div ref={containerRef} className="min- h-[100dvh]  relative  w-full ">
+      <div className="absolute w-full floating-image-container h-[100dvh] top-0 left-0 ">
         {/* <div className="absolute w-40 h-40 top-1/2 left-1/2 bg-red-500 rounded-lg opacity-0  z-40 img img-1"></div> */}
         <div className="absolute w-40 h-40 rounded-3xl overflow-hidden shadow-2xl z-50 img img-1">
           <img
@@ -203,10 +176,10 @@ export default function ImageReveal() {
       </div>
       {/*  */}
       {/* <div className="h-screen" /> */}
-      <div className="absolute h-[100vh] border-4 top-0 left-0 w-full  mx-auto overflow-hidden">
+      <div className="absolute h-[100vh] giving-content top-0 left-0 w-full  mx-auto overflow-hidden">
         <div className="w-full h-full text-center flex justify-center items-center">
-          <div ref={textRef} className="gift-text">
-            <h3 className=" text-4xl leading-none">
+          <div ref={textRef} className="gift-text font-mauline">
+            <h3 className=" text-4xl leading-none mb-4">
               Gifting <br />
               made simple
             </h3>

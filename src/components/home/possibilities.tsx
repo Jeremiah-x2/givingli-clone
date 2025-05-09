@@ -69,7 +69,17 @@ export default function Possibilities() {
     let imagesAnimation: any = [];
     walletImages?.querySelectorAll("img").forEach((image, i) => {
       imagesAnimation.push(
-        gsap.to(image, { rotate: `-${imageRotations[i]}`, paused: true })
+        gsap.to(image, {
+          rotate: () => {
+            if (i === 0) return "-25deg";
+            else if (i === 1) return "-18deg";
+            else if (i === 2) return "-9deg";
+            return "";
+          },
+          stagger: 0.5,
+          delay: i * 0.1,
+          paused: true,
+        })
       );
     });
     card3?.addEventListener("mouseenter", () => {

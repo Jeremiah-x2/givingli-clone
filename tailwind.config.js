@@ -15,9 +15,13 @@ export default {
       },
     },
     fontFamily: {
-      sans: ["Underdog", ...defaultTheme.fontFamily.sans],
       larken: ["Larken", "sans serif"],
       underdog: ["Underdog", "system-ui"],
+      larkin: ["Larkin Capitals", 'sans'],
+      mauline: ["Mauline", 'sans'],
+      worn:['"worn path"', 'sans'],
+      jane:['"Jane Roe"', 'sans'],
+      poppins: ["Poppins", 'sans']
     },
   },
   plugins: [],

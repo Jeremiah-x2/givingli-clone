@@ -12,8 +12,9 @@
   "dependencies": {
     "@gsap/react": "^2.1.2",
     "@tailwindcss/vite": "^4.0.17",
+    "animejs": "^4.0.2",
     "autoprefixer": "^10.4.21",
-    "gsap": "^3.12.7",
+    "gsap": "^3.13.0",
     "lenis": "^1.2.3",
     "lucide-react": "^0.486.0",
     "postcss": "^8.5.3",
