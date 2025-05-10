@@ -77,7 +77,7 @@ export default function ProPage() {
           </div>
         </section>
 
-        <section className="py-[12rem] px-10  relative">
+        <section className="py-[12rem] px-6 lg:px-10  relative">
           <div className="absolute w-full h-full flex items-center top-0 left-0  border-red-500">
             <div className="rounded-[1.5rem] absolute top-0 left-[50%] shadow-[4px_12px_20px_rgba(0,0,0,0.4)] overflow-hidden">
               <img
@@ -130,7 +130,7 @@ export default function ProPage() {
           <div className="container max-w-[85rem] mx-auto">
             <div className="grid gap-x-8 gap-y-20 [grid-template-rows:auto] grid-cols-12 auto-cols-[1fr] w-full">
               <div className="col-start-4 col-end-10 text-center">
-                <div className="text-[4rem] font-mauline max-w-[20rem] leading-none mx-auto">
+                <div className="text-[3rem] lg:text-[4rem] font-mauline max-w-[20rem] leading-none mx-auto">
                   <h3>300+ gift options from brands they love.</h3>
                 </div>
                 <h2 className="text-xs max-w-[28rem] mx-auto mt-5">
@@ -143,7 +143,7 @@ export default function ProPage() {
           </div>
         </section>
 
-        <section className="py-[15rem] px-40">
+        <section className="py-[15rem] lg:px-40">
           <div className="container max-w-[85rem] mx-auto">
             <div className="grid col-start-2 col-end-12 grid-cols-12 gap-8">
               <div className="col-start-2 flex flex-col col-end-8 row-start-1 bg-[#020b66] row-end-3 p-8 rounded-[2.5rem]">

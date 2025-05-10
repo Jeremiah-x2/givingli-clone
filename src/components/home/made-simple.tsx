@@ -25,7 +25,7 @@ export default function ImageReveal() {
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
-        end: "+=200%",
+        end: "+=150%",
         pin: containerRef.current,
         // pinSpacing: false,
 

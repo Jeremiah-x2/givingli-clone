@@ -826,7 +826,7 @@ export default function Home() {
           >
             <div className="w-full max-w-[85rem] px-8 mx-auto h-full flex items-center">
               <div className="grid grid-cols-12 w-full font-mauline">
-                <h3 className="col-span-4 text-[4rem] leading-none font-bold">
+                <h3 className="col-span-4 text-[3rem] lg:text-[4rem] leading-none font-bold">
                   We make gifting and celebrating better.
                 </h3>
                 <p className="col-start-10 col-end-13 font-poppins self-center">

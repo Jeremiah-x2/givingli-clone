@@ -22,6 +22,8 @@ export default function Givingli() {
     });
     bgTl.to("body", { background: "#333333" });
 
+    bgTl.to(".givingli-title", { color: "white" });
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: imageContainerRef.current,
@@ -77,7 +79,7 @@ export default function Givingli() {
       ref={containerRef}
       className="hello grid mt-40 relative grid-cols-12 auto-cols-[1fr] grid-rows-[auto] min- h-[100dvh] mb-20"
     >
-      <h3 className="col-start-5 text-white font-mauline col-end-9 text-center font-extrabold text-[44px] leading-[1.2]">
+      <h3 className="col-start-5 text-[#333] givingli-title font-mauline col-end-9 text-center font-extrabold text-[44px] leading-[1.2]">
         Givingli <br />
         Cash
       </h3>

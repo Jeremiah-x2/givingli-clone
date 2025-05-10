@@ -14,6 +14,7 @@ export default function Possibilities() {
       },
     });
     tl.to("body", { background: "#fcfaf4" });
+    tl.to(".start-gifting-btn", { color: "#B8CEDC" });
   }, []);
   useGSAP(() => {
     const card1 = document.querySelector(".possibility-1");

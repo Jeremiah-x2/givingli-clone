@@ -1,9 +1,24 @@
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import { Play } from "lucide-react";
+import { useRef } from "react";
 
 export default function Video() {
+  const container = useRef<HTMLDivElement>(null);
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container.current,
+        start: "top bottom",
+        end: "+=100%",
+        scrub: true,
+      },
+    });
+    tl.to("body", { background: "rgba(195,178,231,1)" });
+  }, []);
   return (
-    <section className="pt[30rem] pb-[10rem]">
-      <div className="w-full px-10 ">
+    <section ref={container} className="pt[30rem] pb-[10rem]">
+      <div className="w-full lg:px-10 ">
         <div className="w-full max-w-[85rem] pb-[4rem] mx-auto px-[94px]">
           <div className="mt-[12rem] pb-[6rem]">
             <a href="#" className="relative max-w-full">

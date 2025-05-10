@@ -31,13 +31,13 @@ export default function Footer() {
     );
   }, []);
   return (
-    <footer className="min-h-[100dvh] footer relative text-[#184363] w-full max-w-[85rem] mx-auto p-[2.5rem]">
-      <div className="grid gap-8 grid-cols-[5fr_5fr_2fr] grid-rows-[2fr_1fr] p-12">
-        <div className="row-start-[span_2] row-end-[span_2] col-start-[span_1] col-end-[span_1] p-[2rem] rounded-3xl leading-[1] bg-white">
-          <h2 className="text-[5rem] mb-8 font-[700] font-mauline">
+    <footer className="lg:min-h-[100dvh] overflow-hidden footer relative text-[#184363] w-full max-w-[85rem] mx-auto p-[1.5rem] lg:p-[2.5rem]">
+      <div className="grid gap-8 grid-cols-[5fr_5fr_2fr] grid-rows-[2fr_1fr] p-5 lg:p-12">
+        <div className="row-start-[span_2] row-end-[span_2] col-start-[span_1] col-end-[span_1] p-[2rem] rounded-3xl leading-[1] bg-white flex flex-col">
+          <h2 className="text-[3.4rem] lg:text-[5rem] mb-8 font-[700] font-mauline">
             Every moment matters
           </h2>
-          <p className="mb-4 text-inherit">
+          <p className="mb-4 text-inherit mt-auto">
             <Link to={"/"}>
               <img
                 src="https://cdn.prod.website-files.com/65240dac30f703b7a711b7c2/667463d01a10a9f3654e3f47_Logo.svg"
@@ -51,9 +51,9 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className="bg-white flex  flex-col rounded-3xl row-start-[span_1] row-end-[span_1] col-end-[span_1] col-start-[span_1] p-8 ">
-          <h3 className="font-mauline text-3xl">Support</h3>
-          <p className="text-sm">
+        <div className="bg-white flex  flex-col rounded-3xl row-start-[span_1] row-end-[span_1] col-end-[span_1] col-start-[span_1] p-8">
+          <h3 className="font-mauline text-2xl lg:text-3xl">Support</h3>
+          <p className="text-sm mt-auto">
             Have questions?{" "}
             <Link to={"#"} className="underline">
               Get in touch

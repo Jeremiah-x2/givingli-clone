@@ -1,7 +1,7 @@
 export default function AboutHero() {
   return (
-    <section className="min-h-[100vh] bg-[rgba(252,250,244,1)] w-full relative flex justify-center items-center py-10">
-      <div className="px-10 w-full">
+    <section className="min-h-[100vh]  w-full relative flex justify-center items-center py-10">
+      <div className="mg:px-10 w-full">
         <div className="container max-w-[85rem]">
           <div className="grid grid-cols-12 gap-8 auto-cols-[1fr] [grid-template-rows:auto]">
             <div className="row-start-1 font-mauline text-[#333] row-end-2 col-start-3 col-end-11 text-center">

@@ -5,18 +5,29 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React + TS</title>
-    <link href="https://fonts.cdnfonts.com/css/larkin-capitals" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/mauline-display-serif-font" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/worn-path" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/jane-roe" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.cdnfonts.com/css/larkin-capitals"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.cdnfonts.com/css/mauline-display-serif-font"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.cdnfonts.com/css/worn-path" rel="stylesheet" />
+    <link href="https://fonts.cdnfonts.com/css/jane-roe" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet">
+      rel="stylesheet"
+    />
   </head>
-  <body class="bg-bg ">
-    <div id="root" class="w-[100%] overflowx-hidden"></div>
+  <body class="bg-bg w-[100vw] overflow-x-hidden">
+    <div id="root" class="md:block hidden"></div>
+    <div id="root" class="md:hidden">
+      <h3>Unavailable!</h3>
+      <p>Not Responsive for mobile view at the moment.</p>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

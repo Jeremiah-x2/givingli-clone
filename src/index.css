@@ -23,6 +23,10 @@
       format("ttf");
   }
 
+  h3 {
+    @apply font-mauline;
+  }
+
   @font-face {
     font-family: "Underdog";
     font-style: normal;
@@ -30,9 +34,9 @@
     src: url("/public/fonts/Underdog-Regular.ttf") format("ttf");
     font-display: swap;
   }
-    .footer-logo-bg svg {
-      stroke-dasharray: 224;
-      stroke-dashoffset: var(--stroke-array);
+  .footer-logo-bg svg {
+    stroke-dasharray: 224;
+    stroke-dashoffset: var(--stroke-array);
   }
 
   .floating-image img {

@@ -4,6 +4,21 @@ import gsap from "gsap";
 
 export default function OurProducts() {
   const productContainerRef = useRef<HTMLDivElement>(null);
+  const container = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container.current,
+        start: "top bottom",
+        end: "+=50%",
+        scrub: true,
+      },
+    });
+    tl.to("body", {
+      background: "rgba(252,250,244,1)",
+    });
+  }, []);
 
   useGSAP(() => {
     gsap.to(".second-product", {
@@ -78,9 +93,9 @@ export default function OurProducts() {
   }, []);
 
   return (
-    <section className="py-[5rem]">
-      <div className="px-[15rem] w-full">
-        <div className="container">
+    <section ref={container} className="py-[5rem]">
+      <div className="lg:px-[15rem] w-full">
+        <div className="contaier">
           <div className="grid gap-8 grid-cols-12">
             <div className="row-start-1 row-end10 col-start-4 col-end-10">
               <h2 className="leading-[1] font-mauline text-[4rem] mb-4 text-center">
