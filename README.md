@@ -1,54 +1,21 @@
-# React + TypeScript + Vite
+# Givingli Clone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+www.givingli.com
 
-Currently, two official plugins are available:
+## Why Givingli Clone
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Started it out as a test that was given to me for a frontend developer internship role, did the home page and they were satisfied with it. Checked on the projects after a few weeks and decided to complete the the about page, and pro page.
 
-## Expanding the ESLint configuration
+### Tools Used
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- ReactJS
+- Typescript
+- Vite
+- GSAP
+- Swiper
+- TailwindCSS
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Screenshot
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+![Hero Section](/public//images/Screenshot_2025-05-11_01_04_14.png)
+![Features](/public//images/Screenshot_2025-05-11_01_04_22.png)
