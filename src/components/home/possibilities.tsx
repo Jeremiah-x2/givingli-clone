@@ -66,7 +66,7 @@ export default function Possibilities() {
     const card4 = document.querySelector(".possibility-4");
     const possibility4Img = document.querySelector(".possibility-4-img");
     const walletImages = document.querySelector(".wallet-images");
-    const imageRotations: string[] = ["6deg", "18deg", "30deg"];
+    // const imageRotations: string[] = ["6deg", "18deg", "30deg"];
     let imagesAnimation: any = [];
     walletImages?.querySelectorAll("img").forEach((image, i) => {
       imagesAnimation.push(

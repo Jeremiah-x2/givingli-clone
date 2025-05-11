@@ -1,10 +1,8 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import MotionPathPlugin from "gsap/MotionPathPlugin";
 import { Link } from "react-router-dom";
 import { FacebookIcon, InstagramIcon, MailIcon } from "../socials";
-import { animate, onScroll, svg } from "animejs";
-import { useEffect } from "react";
+
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import DrawSVGPlugin from "gsap/DrawSVGPlugin";
 
@@ -12,14 +10,14 @@ export default function Footer() {
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(DrawSVGPlugin);
-    const svgTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".footer",
-        start: "top center",
-        end: "+=100%",
-        scrub: true,
-      },
-    });
+    // const svgTl = gsap.timeline({
+    //   scrollTrigger: {
+    //     trigger: ".footer",
+    //     start: "top center",
+    //     end: "+=100%",
+    //     scrub: true,
+    //   },
+    // });
     gsap.fromTo(
       "#path",
       { drawSVG: "0%", duration: 1 },

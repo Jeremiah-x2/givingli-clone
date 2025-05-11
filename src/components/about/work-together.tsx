@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function WorkTogether() {
   return (
     <section className="min-h[100dvh] py-[6rem] max-w-[85rem] mx-auto px-[4rem] lg:px-[7rem]">
